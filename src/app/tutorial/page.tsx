@@ -1,3 +1,4 @@
+import React from 'react';
 import { AppHeader } from "@/components/AppHeader";
 import { TutorialSection } from "@/components/TutorialSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
