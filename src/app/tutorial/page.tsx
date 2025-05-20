@@ -209,7 +209,7 @@ export default function TutorialPage() {
         </Alert>
       </main>
       <footer className="py-4 text-center text-sm text-muted-foreground border-t">
-        Markdown Maverick &copy; {new Date().getFullYear()}
+        Markdown Maverick © {new Date().getFullYear()}
       </footer>
     </div>
   );
