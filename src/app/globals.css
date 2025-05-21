@@ -105,6 +105,23 @@
 .markdown-preview-area li {
   @apply mb-1;
 }
+
+/* Task List specific styles */
+.markdown-preview-area ul li.task-list-item {
+  @apply list-none pl-1; /* Remove default list-disc and adjust padding */
+}
+
+.markdown-preview-area ul li.task-list-item input[type="checkbox"].task-list-item-checkbox {
+  @apply mr-2 align-middle cursor-default w-4 h-4 accent-primary appearance-none border border-primary rounded-sm checked:bg-primary checked:bg-clip-content checked:before:content-['✔'] checked:before:block checked:before:text-primary-foreground checked:before:text-center checked:before:text-xs checked:before:font-bold;
+   /* Custom checkbox appearance for better cross-browser consistency and styling */
+}
+
+/* Style for the text of a completed task item using :has() */
+.markdown-preview-area ul li.task-list-item:has(input[type="checkbox"].task-list-item-checkbox:checked) {
+  @apply text-muted-foreground line-through;
+}
+
+
 .markdown-preview-area blockquote {
   @apply border-l-4 border-primary pl-4 italic text-muted-foreground my-4;
 }

@@ -3,7 +3,7 @@ import { AppHeader } from "@/components/AppHeader";
 import { TutorialSection } from "@/components/TutorialSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare } from "lucide-react";
+import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare } from "lucide-react";
 import Image from "next/image";
 
 export default function TutorialPage() {
@@ -79,6 +79,35 @@ export default function TutorialPage() {
               </AccordionContent>
             </AccordionItem>
 
+             <AccordionItem value="item-task-lists">
+              <AccordionTrigger className="text-lg font-medium hover:text-primary">
+                <CheckSquare className="mr-2 h-5 w-5 text-primary/80" /> Task Lists
+              </AccordionTrigger>
+              <AccordionContent className="space-y-2 pl-2">
+                <p>Create task lists (checkboxes) using hyphens followed by square brackets. Use `[ ]` for an incomplete task and `[x]` for a completed task.</p>
+                <pre className="bg-muted p-3 rounded-md text-sm"><code>{'- [ ] Incomplete task\n- [x] Completed task\n- [ ] Another task to do'}</code></pre>
+                <Alert variant="default" className="bg-secondary">
+                  <AlertTitle>Preview:</AlertTitle>
+                  <AlertDescription>
+                    <ul className="list-none p-0 m-0">
+                      <li className="flex items-center mb-1">
+                        <input type="checkbox" disabled className="mr-2 w-4 h-4 accent-primary appearance-none border border-primary rounded-sm checked:bg-primary checked:bg-clip-content checked:before:content-['✔'] checked:before:block checked:before:text-primary-foreground checked:before:text-center checked:before:text-xs checked:before:font-bold" />
+                        <span>Incomplete task</span>
+                      </li>
+                      <li className="flex items-center mb-1 text-muted-foreground line-through">
+                        <input type="checkbox" defaultChecked disabled className="mr-2 w-4 h-4 accent-primary appearance-none border border-primary rounded-sm checked:bg-primary checked:bg-clip-content checked:before:content-['✔'] checked:before:block checked:before:text-primary-foreground checked:before:text-center checked:before:text-xs checked:before:font-bold" />
+                        <span>Completed task</span>
+                      </li>
+                       <li className="flex items-center">
+                        <input type="checkbox" disabled className="mr-2 w-4 h-4 accent-primary appearance-none border border-primary rounded-sm checked:bg-primary checked:bg-clip-content checked:before:content-['✔'] checked:before:block checked:before:text-primary-foreground checked:before:text-center checked:before:text-xs checked:before:font-bold" />
+                        <span>Another task to do</span>
+                      </li>
+                    </ul>
+                  </AlertDescription>
+                </Alert>
+              </AccordionContent>
+            </AccordionItem>
+
             <AccordionItem value="item-4">
               <AccordionTrigger className="text-lg font-medium hover:text-primary">
                 <LinkIcon className="mr-2 h-5 w-5 text-primary/80" /> Links
@@ -100,12 +129,13 @@ export default function TutorialPage() {
                 <ImageIcon className="mr-2 h-5 w-5 text-primary/80" /> Images
               </AccordionTrigger>
               <AccordionContent className="space-y-2 pl-2">
-                <p>Embed images using `![Alt Text](Image URL)`.</p>
-                <pre className="bg-muted p-3 rounded-md text-sm"><code>{'![Placeholder Image](https://placehold.co/300x200.png)'}</code></pre>
+                <p>Embed images using `![Alt Text](Image URL)`. You can also suggest dimensions using `{ width="50%" height="100px" }` syntax.</p>
+                <pre className="bg-muted p-3 rounded-md text-sm"><code>{'![Placeholder Image](https://placehold.co/300x200.png)\n![Sized Image](https://placehold.co/300x200.png){ width="150px" }'}</code></pre>
                 <Alert variant="default" className="bg-secondary">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
-                    <Image src="https://placehold.co/300x200.png" alt="Placeholder Image" width={300} height={200} className="rounded-md shadow-sm" data-ai-hint="abstract placeholder" />
+                    <Image src="https://placehold.co/300x200.png" alt="Placeholder Image" width={300} height={200} className="rounded-md shadow-sm my-2" data-ai-hint="abstract placeholder" />
+                    <img src="https://placehold.co/300x200.png" alt="Sized Image" style={{ width: "150px" }} className="rounded-md shadow-sm my-2" data-ai-hint="abstract photo" />
                   </AlertDescription>
                 </Alert>
               </AccordionContent>
