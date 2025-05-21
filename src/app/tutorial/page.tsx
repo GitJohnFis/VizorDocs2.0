@@ -4,7 +4,7 @@ import { AppHeader } from "@/components/AppHeader";
 import { TutorialSection } from "@/components/TutorialSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff } from "lucide-react";
+import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline } from "lucide-react";
 import Image from "next/image";
 
 export default function TutorialPage() {
@@ -177,6 +177,28 @@ export default function TutorialPage() {
               </AccordionContent>
             </AccordionItem>
 
+            <AccordionItem value="item-line-breaks">
+              <AccordionTrigger className="text-lg font-medium hover:text-primary">
+                <Baseline className="mr-2 h-5 w-5 text-primary/80" /> Line Breaks (HTML)
+              </AccordionTrigger>
+              <AccordionContent className="space-y-2 pl-2">
+                <p>To force a line break, you can use the HTML <code>&lt;br/&gt;</code> tag. This is useful when standard Markdown line breaks (like two spaces at the end of a line) don't give the desired spacing, or if you need multiple blank lines.</p>
+                <pre className="bg-muted p-3 rounded-md text-sm"><code>{'First line of text.\n<br/>\nThis text will appear on a new line after a single blank line.'}</code></pre>
+                <Alert variant="default" className="bg-secondary">
+                  <AlertTitle>Preview:</AlertTitle>
+                  <AlertDescription>
+                    <p>First line of text.<br/>This text will appear on a new line after a single blank line.</p>
+                  </AlertDescription>
+                </Alert>
+                <Alert variant="info" className="mt-3 bg-blue-50 border-blue-300">
+                  <AlertTitle className="text-blue-700">Note</AlertTitle>
+                  <AlertDescription className="text-blue-600">
+                    While Markdown supports HTML, using it too much can make your Markdown less readable. For simple paragraph breaks, just leave a blank line between paragraphs. Use <code>&lt;br/&gt;</code> when you specifically need a single line break within a block of text or want to control spacing more precisely.
+                  </AlertDescription>
+                </Alert>
+              </AccordionContent>
+            </AccordionItem>
+
             <AccordionItem value="item-comments">
               <AccordionTrigger className="text-lg font-medium hover:text-primary">
                 <MessageSquareOff className="mr-2 h-5 w-5 text-primary/80" /> Comments
@@ -272,3 +294,4 @@ export default function TutorialPage() {
     </div>
   );
 }
+
