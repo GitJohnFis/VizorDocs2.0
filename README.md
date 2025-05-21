@@ -1,4 +1,4 @@
-# Markdown Project v2
+# Markdown Editor v2
 
 ## 🚀 Overview
 This is **Version 2** of the Markdown project, featuring improved formatting and extended markdown syntax.
