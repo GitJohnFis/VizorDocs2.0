@@ -155,8 +155,8 @@ export default function TutorialPage() {
                       <Image 
                         src="https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg" 
                         alt="Markdown Logo" 
-                        width={100} // Adjust width as needed
-                        height={62} // Adjust height as needed
+                        width={100} 
+                        height={62} 
                         className="rounded-md shadow-sm"
                         data-ai-hint="logo brand"
                       />
@@ -204,21 +204,45 @@ export default function TutorialPage() {
 
             <AccordionItem value="item-line-breaks">
               <AccordionTrigger className="text-lg font-medium hover:text-primary">
-                <Baseline className="mr-2 h-5 w-5 text-primary/80" /> Line Breaks (HTML)
+                <Baseline className="mr-2 h-5 w-5 text-primary/80" /> Line Breaks & Blank Lines (HTML)
               </AccordionTrigger>
-              <AccordionContent className="space-y-2 pl-2">
-                <p>To force a line break, you can use the HTML <code>&lt;br/&gt;</code> tag. This is useful when standard Markdown line breaks (like two spaces at the end of a line) don't give the desired spacing, or if you need multiple blank lines.</p>
-                <pre className="bg-muted p-3 rounded-md text-sm"><code>{'First line of text.\n<br/>\nThis text will appear on a new line after a single blank line.'}</code></pre>
-                <Alert variant="default" className="bg-secondary">
-                  <AlertTitle>Preview:</AlertTitle>
-                  <AlertDescription>
-                    <p>First line of text.<br/>This text will appear on a new line after a single blank line.</p>
-                  </AlertDescription>
-                </Alert>
+              <AccordionContent className="space-y-4 pl-2">
+                <div>
+                  <h4 className="font-semibold text-md mb-1">Using <code>&lt;br/&gt;</code> for Single Line Breaks</h4>
+                  <p>To force a single line break within a paragraph, you can use the HTML <code>&lt;br/&gt;</code> tag.</p>
+                  <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'First line of text.<br/>\nThis text will appear directly on the next line.'}</code></pre>
+                  <Alert variant="default" className="bg-secondary mt-2">
+                    <AlertTitle>Preview:</AlertTitle>
+                    <AlertDescription>
+                      <p>First line of text.<br/>This text will appear directly on the next line.</p>
+                    </AlertDescription>
+                  </Alert>
+                  <p className="mt-2 text-sm">Note: Using multiple <code>&lt;br/&gt;&lt;br/&gt;</code> tags in a row might not produce multiple visible blank lines in all Markdown renderers, as HTML often collapses consecutive line breaks within standard text flow. Typically, two <code>&lt;br/&gt;</code> tags will result in text on the next line, then an empty line, then text on the line after that (equivalent to a single paragraph break).</p>
+                   <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Line 1<br/><br/>Line 2'}</code></pre>
+                   <Alert variant="default" className="bg-secondary mt-2">
+                    <AlertTitle>Preview (Typical Behavior):</AlertTitle>
+                    <AlertDescription>
+                      <p>Line 1<br/><br/>Line 2</p>
+                    </AlertDescription>
+                  </Alert>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-md mb-1">Using <code>&lt;pre&gt;</code> for Multiple Preserved Blank Lines</h4>
+                  <p>If you need to ensure multiple blank lines are preserved exactly as you type them, you can use the HTML <code>&lt;pre&gt;</code> tag. Content inside <code>&lt;pre&gt;</code> tags is treated as preformatted text, meaning whitespace (including multiple blank lines) is respected. However, note that content inside <code>&lt;pre&gt;</code> is typically rendered in a monospace font and Markdown syntax is not processed within it.</p>
+                  <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Text before.\n<pre>\n\n\n</pre>\nText after.'}</code></pre>
+                  <Alert variant="default" className="bg-secondary mt-2">
+                    <AlertTitle>Preview:</AlertTitle>
+                    <AlertDescription>
+                      <p>Text before.</p>
+                      <pre className="whitespace-pre-wrap my-0 py-0">{"\n\n\n"}</pre>
+                      <p>Text after.</p>
+                    </AlertDescription>
+                  </Alert>
+                </div>
                 <Alert variant="default" className="mt-3 bg-blue-50 border-blue-300 dark:bg-blue-900/30 dark:border-blue-700">
-                  <AlertTitle className="text-blue-700 dark:text-blue-300">Note</AlertTitle>
+                  <AlertTitle className="text-blue-700 dark:text-blue-300">General Note on Line Breaks</AlertTitle>
                   <AlertDescription className="text-blue-600 dark:text-blue-400">
-                    While Markdown supports HTML, using it too much can make your Markdown less readable. For simple paragraph breaks, just leave a blank line between paragraphs. Use <code>&lt;br/&gt;</code> when you specifically need a single line break within a block of text or want to control spacing more precisely.
+                    While Markdown supports HTML, using it excessively can reduce readability. For standard paragraph breaks (which create a visual space between blocks of text), simply leave an empty line in your Markdown source. Use HTML tags like <code>&lt;br/&gt;</code> or <code>&lt;pre&gt;</code> for more specific control over line spacing when Markdown's default behavior isn't sufficient.
                   </AlertDescription>
                 </Alert>
               </AccordionContent>
@@ -320,5 +344,3 @@ export default function TutorialPage() {
   );
 }
 
-
-    
