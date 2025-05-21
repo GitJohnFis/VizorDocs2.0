@@ -4,7 +4,7 @@ import { AppHeader } from "@/components/AppHeader";
 import { TutorialSection } from "@/components/TutorialSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline, Link2, CornerDownLeft, Minus, Table2 } from "lucide-react";
+import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline, Link2, CornerDownLeft, Minus, Table2, FolderKanban } from "lucide-react";
 import Image from "next/image";
 
 export default function TutorialPage() {
@@ -312,7 +312,7 @@ export default function TutorialPage() {
                 <div>
                   <h4 className="font-semibold text-md mb-1 mt-4">Using Two Trailing Spaces for Line Breaks</h4>
                   <p>A common Markdown way to create a hard line break is to end a line with two or more spaces and then press Enter. Many editors will make these trailing spaces hard to see, so be careful.</p>
-                  <pre className="bg-muted p-3 rounded-md text-sm mt-2 whitespace-pre-wrap"><code>{'Line one  \nLine two\n\n(Note: There are two spaces after "Line one")'}</code></pre>
+                  <pre className="bg-muted p-3 rounded-md text-sm whitespace-pre-wrap"><code>{'Line one  \nLine two\n\n(Note: There are two spaces after "Line one")'}</code></pre>
                   <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-2">
                     <AlertTitle>Preview:</AlertTitle>
                     <AlertDescription>
@@ -518,6 +518,149 @@ export default function TutorialPage() {
           </Alert>
         </TutorialSection>
 
+        <TutorialSection title="Displaying Folder Structures" icon={<FolderKanban className="h-6 w-6" />}>
+          <p>This tutorial covers multiple ways to generate nested folder structures and add them to documentation or issues or comments in GitHub Slack Markdown.</p>
+          <p className="mt-2">Markdown is plain text content that is easy to read and converted to HTML. The directory structure is a tree navigation of nested folders and file types. There is no support for directory structure creation for Markdown standard syntax.</p>
+          <p className="mt-2">Showing directory structure in Markdown helps users to:</p>
+          <ul className="list-disc list-inside ml-4 space-y-1 mt-2">
+            <li>Write documentation or README files in GitHub.</li>
+            <li>Include structure in story or bug comments in JIRA.</li>
+            <li>Use nested folder structures in Slack comments.</li>
+            <li>Support parent-child structures in Stack Overflow questions and answers.</li>
+          </ul>
+
+          <h3 className="font-semibold text-xl mb-2 mt-6">How to Show Folder Structure in Markdown Files</h3>
+          <p>You can generate folder structure manually by command and copy the structure, enclosing it in three backticks (```) in Markdown:</p>
+          <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>
+{`\`\`\`bash
+├── src
+│   ├── controller
+│   │   ├── **/*.css
+│   ├── views
+│   ├── model
+│   ├── index.js
+├── public
+│   ├── css
+│   │   ├── **/*.css
+│   ├── images
+│   ├── js
+│   ├── index.html
+├── dist (or build)
+├── node_modules
+├── package.json
+├── package-lock.json
+└── .gitignore
+\`\`\``}
+          </code></pre>
+          <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-4">
+            <AlertTitle>Preview:</AlertTitle>
+            <AlertDescription>
+            <pre className="bg-muted p-3 rounded-md text-sm mt-2 overflow-x-auto">
+{`├── src
+│   ├── controller
+│   │   ├── **/*.css
+│   ├── views
+│   ├── model
+│   ├── index.js
+├── public
+│   ├── css
+│   │   ├── **/*.css
+│   ├── images
+│   ├── js
+│   ├── index.html
+├── dist (or build)
+├── node_modules
+├── package.json
+├── package-lock.json
+└── .gitignore`}
+              </pre>
+            </AlertDescription>
+          </Alert>
+
+
+          <h3 className="font-semibold text-xl mb-2 mt-6">Tree Command to Generate Nested Directory Structure</h3>
+          <p>The <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">tree</code> command is a Unix command that displays nested folders and files and outputs them to the console.</p>
+          <ol className="list-decimal list-inside ml-4 space-y-1 mt-2">
+            <li>Navigate to the application root using <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">cd nodeapp</code>, where <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">nodeapp</code> is a Node.js application.</li>
+            <li>Run the <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">tree</code> command:</li>
+          </ol>
+          <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>
+{`tree`}
+          </code></pre>
+          <p className="mt-2">Copy the output to the Markdown file and enclose it in three backticks (<code>{"```bash"}</code>) to format it properly.</p>
+          
+          <h3 className="font-semibold text-xl mb-2 mt-6">Using HTML <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">&lt;pre&gt;</code> Tags</h3>
+          <p>Another way is to use the <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">&lt;pre&gt;</code> tag in HTML, which preserves line breaks and spaces. HTML tags work in Markdown-supported platforms that allow raw HTML.</p>
+          <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>
+{`<pre>
+├── src
+│   ├── controller
+│   │   ├── **/*.css
+│   ├── views
+│   ├── model
+│   ├── index.js
+├── public
+│   ├── css
+│   │   ├── **/*.css
+│   ├── images
+│   ├── js
+│   ├── index.html
+├── dist (or build)
+├── node_modules
+├── package.json
+├── package-lock.json
+└── .gitignore
+</pre>`}
+          </code></pre>
+           <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-4">
+            <AlertTitle>Preview (using &lt;pre&gt;):</AlertTitle>
+            <AlertDescription>
+            <pre className="text-sm mt-2 overflow-x-auto">
+{`├── src
+│   ├── controller
+│   │   ├── **/*.css
+│   ├── views
+│   ├── model
+│   ├── index.js
+├── public
+│   ├── css
+│   │   ├── **/*.css
+│   ├── images
+│   ├── js
+│   ├── index.html
+├── dist (or build)
+├── node_modules
+├── package.json
+├── package-lock.json
+└── .gitignore`}
+              </pre>
+            </AlertDescription>
+          </Alert>
+
+          <h3 className="font-semibold text-xl mb-2 mt-6">Generate Folder Structure with NPM Packages</h3>
+          
+          <h4 className="font-semibold text-lg mb-1 mt-4">Using <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">markdown-notes-tree</code></h4>
+          <p>This is an NPM package that works in Node.js projects.</p>
+          <p className="mt-1">Install <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">markdown-notes-tree</code> using the following command:</p>
+          <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>
+npm install -D markdown-notes-tree
+          </code></pre>
+          <p className="mt-1">Run the package to generate a Markdown representation of the folder structure:</p>
+          <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>
+markdown-notes-tree
+          </code></pre>
+          <p className="mt-1">This tool allows customization:</p>
+          <ul className="list-disc list-inside ml-4 space-y-1 mt-2">
+            <li>Ignore files like <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">node_modules</code>.</li>
+            <li>Add folder or file descriptions and titles.</li>
+            <li>Include or exclude specific file or folder types.</li>
+            <li>Easily generate directory structures and copy them to documentation or <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">README.md</code>.</li>
+          </ul>
+
+          <h4 className="font-semibold text-lg mb-1 mt-4">Using <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">md-file-tree</code></h4>
+          <p>Another NPM package, <code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">md-file-tree</code>, also generates and copies folder structures to Markdown files.</p>
+        </TutorialSection>
+
         <TutorialSection title="Using the Editor" icon={<Wand2 className="h-6 w-6" />}>
           <p>
             Markdown Maverick features a powerful split-screen editor.
@@ -583,5 +726,7 @@ export default function TutorialPage() {
   );
 }
 
+
+    
 
     
