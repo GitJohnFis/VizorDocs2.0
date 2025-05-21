@@ -4,7 +4,7 @@ import { AppHeader } from "@/components/AppHeader";
 import { TutorialSection } from "@/components/TutorialSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline, Link2 } from "lucide-react";
+import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline, Link2, CornerDownLeft } from "lucide-react";
 import Image from "next/image";
 
 export default function TutorialPage() {
@@ -204,7 +204,7 @@ export default function TutorialPage() {
 
             <AccordionItem value="item-line-breaks">
               <AccordionTrigger className="text-lg font-medium hover:text-primary">
-                <Baseline className="mr-2 h-5 w-5 text-primary/80" /> Line Breaks & Blank Lines (HTML)
+                <Baseline className="mr-2 h-5 w-5 text-primary/80" /> Line Breaks & Spacing
               </AccordionTrigger>
               <AccordionContent className="space-y-4 pl-2">
                 <div>
@@ -227,7 +227,7 @@ export default function TutorialPage() {
                   </Alert>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-md mb-1">Using <code>&lt;pre&gt;</code> for Multiple Preserved Blank Lines</h4>
+                  <h4 className="font-semibold text-md mb-1 mt-4">Using <code>&lt;pre&gt;</code> for Multiple Preserved Blank Lines</h4>
                   <p>If you need to ensure multiple blank lines are preserved exactly as you type them, you can use the HTML <code>&lt;pre&gt;</code> tag. Content inside <code>&lt;pre&gt;</code> tags is treated as preformatted text, meaning whitespace (including multiple blank lines) is respected. However, note that content inside <code>&lt;pre&gt;</code> is typically rendered in a monospace font and Markdown syntax is not processed within it.</p>
                   <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Text before.\n<pre>\n\n\n</pre>\nText after.'}</code></pre>
                   <Alert variant="default" className="bg-secondary mt-2">
@@ -239,10 +239,53 @@ export default function TutorialPage() {
                     </AlertDescription>
                   </Alert>
                 </div>
+
+                <div>
+                  <h4 className="font-semibold text-md mb-1 mt-4">Using <code>&amp;nbsp;</code> for Blank Lines</h4>
+                  <p>You can use the HTML entity <code>&amp;nbsp;</code> (non-breaking space) to create blank lines. Each <code>&amp;nbsp;</code> on its own line effectively creates an empty line with a non-collapsible space.</p>
+                  <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Line 1\n&nbsp;\n&nbsp;\nLine 2'}</code></pre>
+                  <Alert variant="default" className="bg-secondary mt-2">
+                    <AlertTitle>Preview:</AlertTitle>
+                    <AlertDescription>
+                      <p>Line 1</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>Line 2</p>
+                    </AlertDescription>
+                  </Alert>
+                  <p className="mt-2 text-sm">Note: While this works in many Markdown renderers, some (like Bitbucket) might not interpret <code>&amp;nbsp;</code> on its own line as a full blank line for spacing purposes. Support can vary.</p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-md mb-1 mt-4">Using Backslashes (<code>\</code>) for Line Breaks</h4>
+                  <p>A backslash at the end of a line tells the Markdown parser to insert a hard line break (like <code>&lt;br/&gt;</code>).</p>
+                  <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Line 1\\\nLine 2\\\n\\\nLine 3'}</code></pre>
+                  <Alert variant="default" className="bg-secondary mt-2">
+                    <AlertTitle>Preview:</AlertTitle>
+                    <AlertDescription>
+                      <p>Line 1<br/>Line 2<br/><br/>Line 3</p>
+                    </AlertDescription>
+                  </Alert>
+                  <p className="mt-2 text-sm">This is useful for poems or addresses where line breaks are significant.</p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-md mb-1 mt-4">Using Two Trailing Spaces for Line Breaks</h4>
+                  <p>A common Markdown way to create a hard line break is to end a line with two or more spaces and then press Enter. Many editors will make these trailing spaces hard to see, so be careful.</p>
+                  <pre className="bg-muted p-3 rounded-md text-sm mt-2 whitespace-pre-wrap"><code>{'Line one  \nLine two\n\n(Note: There are two spaces after "Line one")'}</code></pre>
+                  <Alert variant="default" className="bg-secondary mt-2">
+                    <AlertTitle>Preview:</AlertTitle>
+                    <AlertDescription>
+                      <p>Line one<br/>Line two</p>
+                      <p>(Note: There are two spaces after "Line one")</p>
+                    </AlertDescription>
+                  </Alert>
+                </div>
+
                 <Alert variant="default" className="mt-3 bg-blue-50 border-blue-300 dark:bg-blue-900/30 dark:border-blue-700">
-                  <AlertTitle className="text-blue-700 dark:text-blue-300">General Note on Line Breaks</AlertTitle>
+                  <AlertTitle className="text-blue-700 dark:text-blue-300">General Note on Line Breaks & Spacing</AlertTitle>
                   <AlertDescription className="text-blue-600 dark:text-blue-400">
-                    While Markdown supports HTML, using it excessively can reduce readability. For standard paragraph breaks (which create a visual space between blocks of text), simply leave an empty line in your Markdown source. Use HTML tags like <code>&lt;br/&gt;</code> or <code>&lt;pre&gt;</code> for more specific control over line spacing when Markdown's default behavior isn't sufficient.
+                    For standard paragraph breaks (which create a visual space between blocks of text), simply leave an empty line in your Markdown source. Use methods like <code>&lt;br/&gt;</code>, backslashes, or two trailing spaces for more specific control over line breaks within paragraphs or when precise line formatting is needed. <code>&lt;pre&gt;</code> and <code>&amp;nbsp;</code> offer ways to control blank lines, but their support and rendering can vary.
                   </AlertDescription>
                 </Alert>
               </AccordionContent>
@@ -343,4 +386,3 @@ export default function TutorialPage() {
     </div>
   );
 }
-
