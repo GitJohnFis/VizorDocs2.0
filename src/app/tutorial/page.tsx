@@ -4,7 +4,7 @@ import { AppHeader } from "@/components/AppHeader";
 import { TutorialSection } from "@/components/TutorialSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline, Link2, CornerDownLeft } from "lucide-react";
+import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline, Link2, CornerDownLeft, Minus } from "lucide-react";
 import Image from "next/image";
 
 export default function TutorialPage() {
@@ -202,14 +202,54 @@ export default function TutorialPage() {
               </AccordionContent>
             </AccordionItem>
 
+            <AccordionItem value="item-horizontal-rules">
+              <AccordionTrigger className="text-lg font-medium hover:text-primary">
+                <Minus className="mr-2 h-5 w-5 text-primary/80" /> Horizontal Rules
+              </AccordionTrigger>
+              <AccordionContent className="space-y-2 pl-2">
+                <p>Create a horizontal rule (thematic break) using three or more hyphens (---), asterisks (***), or underscores (___) on a line by themselves. You can also include spaces between the characters.</p>
+                <pre className="bg-muted p-3 rounded-md text-sm"><code>{'Line one\n\n---\n\nLine two\n\n* * *\n\nAnother line\n\n_________ \n\nEnd'}</code></pre>
+                <Alert variant="default" className="bg-secondary">
+                  <AlertTitle>Preview:</AlertTitle>
+                  <AlertDescription>
+                    <p>Line one</p>
+                    <hr className="my-2 border-border" />
+                    <p>Line two</p>
+                    <hr className="my-2 border-border" />
+                    <p>Another line</p>
+                    <hr className="my-2 border-border" />
+                    <p>End</p>
+                  </AlertDescription>
+                </Alert>
+                 <Alert variant="default" className="mt-3 bg-blue-50 border-blue-300 dark:bg-blue-900/30 dark:border-blue-700">
+                  <AlertTitle className="text-blue-700 dark:text-blue-300">Tip</AlertTitle>
+                  <AlertDescription className="text-blue-600 dark:text-blue-400">
+                    Horizontal rules are great for visually separating sections of your document.
+                  </AlertDescription>
+                </Alert>
+              </AccordionContent>
+            </AccordionItem>
+
             <AccordionItem value="item-line-breaks">
               <AccordionTrigger className="text-lg font-medium hover:text-primary">
                 <Baseline className="mr-2 h-5 w-5 text-primary/80" /> Line Breaks & Spacing
               </AccordionTrigger>
               <AccordionContent className="space-y-4 pl-2">
+                 <div>
+                  <h4 className="font-semibold text-md mb-1">Paragraph Breaks</h4>
+                  <p>To create separate paragraphs, leave a blank line between blocks of text. This is the most common way to create vertical space.</p>
+                  <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'First paragraph.\n\nSecond paragraph.'}</code></pre>
+                  <Alert variant="default" className="bg-secondary mt-2">
+                    <AlertTitle>Preview:</AlertTitle>
+                    <AlertDescription>
+                      <p>First paragraph.</p>
+                      <p>Second paragraph.</p>
+                    </AlertDescription>
+                  </Alert>
+                </div>
                 <div>
-                  <h4 className="font-semibold text-md mb-1">Using <code>&lt;br/&gt;</code> for Single Line Breaks</h4>
-                  <p>To force a single line break within a paragraph, you can use the HTML <code>&lt;br/&gt;</code> tag.</p>
+                  <h4 className="font-semibold text-md mb-1 mt-4">Using <code>&lt;br/&gt;</code> for Single Line Breaks</h4>
+                  <p>To force a single line break within a paragraph (a hard line break), you can use the HTML <code>&lt;br/&gt;</code> tag.</p>
                   <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'First line of text.<br/>\nThis text will appear directly on the next line.'}</code></pre>
                   <Alert variant="default" className="bg-secondary mt-2">
                     <AlertTitle>Preview:</AlertTitle>
@@ -386,3 +426,4 @@ export default function TutorialPage() {
     </div>
   );
 }
+
