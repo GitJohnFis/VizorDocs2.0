@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { AppHeader } from "@/components/AppHeader";
 import { TutorialSection } from "@/components/TutorialSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare } from "lucide-react";
+import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff } from "lucide-react";
 import Image from "next/image";
 
 export default function TutorialPage() {
@@ -171,6 +172,34 @@ export default function TutorialPage() {
                       <p>This is a blockquote.</p>
                       <p>It can span multiple lines.</p>
                     </blockquote>
+                  </AlertDescription>
+                </Alert>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-comments">
+              <AccordionTrigger className="text-lg font-medium hover:text-primary">
+                <MessageSquareOff className="mr-2 h-5 w-5 text-primary/80" /> Comments
+              </AccordionTrigger>
+              <AccordionContent className="space-y-2 pl-2">
+                <p>You can add comments to your Markdown that will not be visible in the preview. Use the syntax <code>{'{::comment}'}</code> to start a comment and <code>{'{:/comment}'}</code> to end it.</p>
+                <pre className="bg-muted p-3 rounded-md text-sm">
+                  <code>
+                    {'This text will be visible.\n\n{::comment}\nThis is a comment block.\nIt can span multiple lines.\nNone of this will appear in the preview.\n{:/comment}\n\nThis text is also visible.\n\nAn inline comment: Visible text {::comment}hidden comment{:/comment} more visible text.'}
+                  </code>
+                </pre>
+                <Alert variant="default" className="bg-secondary">
+                  <AlertTitle>Preview:</AlertTitle>
+                  <AlertDescription>
+                    <p>This text will be visible.</p>
+                    <p>This text is also visible.</p>
+                    <p>An inline comment: Visible text  more visible text.</p>
+                  </AlertDescription>
+                </Alert>
+                 <Alert variant="info" className="mt-3 bg-blue-50 border-blue-300">
+                  <AlertTitle className="text-blue-700">Note</AlertTitle>
+                  <AlertDescription className="text-blue-600">
+                    Comments are useful for leaving notes to yourself or collaborators directly within the Markdown document without affecting the final output.
                   </AlertDescription>
                 </Alert>
               </AccordionContent>
