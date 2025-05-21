@@ -4,7 +4,7 @@ import { AppHeader } from "@/components/AppHeader";
 import { TutorialSection } from "@/components/TutorialSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline, Link2, CornerDownLeft, Minus } from "lucide-react";
+import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline, Link2, CornerDownLeft, Minus, Table2 } from "lucide-react";
 import Image from "next/image";
 
 export default function TutorialPage() {
@@ -34,7 +34,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>Use hash symbols (#) before your text to create headings. More hashes mean smaller headings.</p>
                 <pre className="bg-muted p-3 rounded-md text-sm"><code>{'# Heading 1\n## Heading 2\n### Heading 3'}</code></pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <h1 className="text-2xl font-bold mt-1 mb-1">Heading 1</h1>
@@ -52,7 +52,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>Wrap text with asterisks (*) or underscores (_) for italic, and double asterisks (**) or double underscores (__) for bold.</p>
                 <pre className="bg-muted p-3 rounded-md text-sm"><code>{'*This text will be italic*\n_This will also be italic_\n\n**This text will be bold**\n__This will also be bold__\n\n_You **can** combine them_'}</code></pre>
-                 <Alert variant="default" className="bg-secondary">
+                 <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <p><em>This text will be italic</em></p>
@@ -70,7 +70,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>For unordered lists, use asterisks (*), plus signs (+), or hyphens (-). For ordered lists, use numbers followed by periods.</p>
                 <pre className="bg-muted p-3 rounded-md text-sm"><code>{'* Item 1\n* Item 2\n  * Sub-item 2.1\n\n1. First item\n2. Second item'}</code></pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <ul><li>Item 1</li><li>Item 2<ul><li>Sub-item 2.1</li></ul></li></ul>
@@ -87,7 +87,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>Create task lists (checkboxes) using hyphens followed by square brackets. Use `[ ]` for an incomplete task and `[x]` for a completed task.</p>
                 <pre className="bg-muted p-3 rounded-md text-sm"><code>{'- [ ] Incomplete task\n- [x] Completed task\n- [ ] Another task to do'}</code></pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <ul className="list-none p-0 m-0">
@@ -116,7 +116,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>Create links using `[Link Text](URL)`.</p>
                 <pre className="bg-muted p-3 rounded-md text-sm"><code>{'[Visit Google](https://www.google.com)'}</code></pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <a href="#" className="text-primary hover:underline">Visit Google</a>
@@ -132,7 +132,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>Embed images using `![Alt Text](Image URL)`.</p>
                 <pre className="bg-muted p-3 rounded-md text-sm"><code>{'![Placeholder Image](https://placehold.co/300x200.png)'}</code></pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <Image src="https://placehold.co/300x200.png" alt="Placeholder Image" width={300} height={200} className="rounded-md shadow-sm my-2" data-ai-hint="abstract placeholder" />
@@ -148,7 +148,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>You can make images clickable by wrapping the Markdown for an image in the Markdown for a link:</p>
                 <pre className="bg-muted p-3 rounded-md text-sm"><code>{'[![Markdown Logo](https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg)](https://www.markdownguide.org)'}</code></pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <a href="https://www.markdownguide.org" target="_blank" rel="noopener noreferrer" className="inline-block my-2">
@@ -173,7 +173,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>For inline code, wrap text with backticks (`). For code blocks, use triple backticks (```) or indent lines with four spaces.</p>
                 <pre className="bg-muted p-3 rounded-md text-sm">{"`This is inline code.`\n\n```javascript\nfunction greet() {\n  console.log('Hello, world!');\n}\n```"}</code></pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <p><code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">This is inline code.</code></p>
@@ -190,7 +190,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>Use the greater-than symbol (>) at the beginning of a line to create a blockquote.</p>
                 <pre className="bg-muted p-3 rounded-md text-sm"><code>{'> This is a blockquote.\n> It can span multiple lines.'}</code></pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <blockquote className="border-l-4 border-primary pl-4 italic text-muted-foreground my-2">
@@ -209,7 +209,7 @@ export default function TutorialPage() {
               <AccordionContent className="space-y-2 pl-2">
                 <p>Create a horizontal rule (thematic break) using three or more hyphens (---), asterisks (***), or underscores (___) on a line by themselves. You can also include spaces between the characters.</p>
                 <pre className="bg-muted p-3 rounded-md text-sm"><code>{'Line one\n\n---\n\nLine two\n\n* * *\n\nAnother line\n\n_________ \n\nEnd'}</code></pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <p>Line one</p>
@@ -239,7 +239,7 @@ export default function TutorialPage() {
                   <h4 className="font-semibold text-md mb-1">Paragraph Breaks</h4>
                   <p>To create separate paragraphs, leave a blank line between blocks of text. This is the most common way to create vertical space.</p>
                   <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'First paragraph.\n\nSecond paragraph.'}</code></pre>
-                  <Alert variant="default" className="bg-secondary mt-2">
+                  <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-2">
                     <AlertTitle>Preview:</AlertTitle>
                     <AlertDescription>
                       <p>First paragraph.</p>
@@ -251,7 +251,7 @@ export default function TutorialPage() {
                   <h4 className="font-semibold text-md mb-1 mt-4">Using <code>&lt;br/&gt;</code> for Single Line Breaks</h4>
                   <p>To force a single line break within a paragraph (a hard line break), you can use the HTML <code>&lt;br/&gt;</code> tag.</p>
                   <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'First line of text.<br/>\nThis text will appear directly on the next line.'}</code></pre>
-                  <Alert variant="default" className="bg-secondary mt-2">
+                  <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-2">
                     <AlertTitle>Preview:</AlertTitle>
                     <AlertDescription>
                       <p>First line of text.<br/>This text will appear directly on the next line.</p>
@@ -259,7 +259,7 @@ export default function TutorialPage() {
                   </Alert>
                   <p className="mt-2 text-sm">Note: Using multiple <code>&lt;br/&gt;&lt;br/&gt;</code> tags in a row might not produce multiple visible blank lines in all Markdown renderers, as HTML often collapses consecutive line breaks within standard text flow. Typically, two <code>&lt;br/&gt;</code> tags will result in text on the next line, then an empty line, then text on the line after that (equivalent to a single paragraph break).</p>
                    <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Line 1<br/><br/>Line 2'}</code></pre>
-                   <Alert variant="default" className="bg-secondary mt-2">
+                   <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-2">
                     <AlertTitle>Preview (Typical Behavior):</AlertTitle>
                     <AlertDescription>
                       <p>Line 1<br/><br/>Line 2</p>
@@ -270,7 +270,7 @@ export default function TutorialPage() {
                   <h4 className="font-semibold text-md mb-1 mt-4">Using <code>&lt;pre&gt;</code> for Multiple Preserved Blank Lines</h4>
                   <p>If you need to ensure multiple blank lines are preserved exactly as you type them, you can use the HTML <code>&lt;pre&gt;</code> tag. Content inside <code>&lt;pre&gt;</code> tags is treated as preformatted text, meaning whitespace (including multiple blank lines) is respected. However, note that content inside <code>&lt;pre&gt;</code> is typically rendered in a monospace font and Markdown syntax is not processed within it.</p>
                   <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Text before.\n<pre>\n\n\n</pre>\nText after.'}</code></pre>
-                  <Alert variant="default" className="bg-secondary mt-2">
+                  <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-2">
                     <AlertTitle>Preview:</AlertTitle>
                     <AlertDescription>
                       <p>Text before.</p>
@@ -284,7 +284,7 @@ export default function TutorialPage() {
                   <h4 className="font-semibold text-md mb-1 mt-4">Using <code>&amp;nbsp;</code> for Blank Lines</h4>
                   <p>You can use the HTML entity <code>&amp;nbsp;</code> (non-breaking space) to create blank lines. Each <code>&amp;nbsp;</code> on its own line effectively creates an empty line with a non-collapsible space.</p>
                   <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Line 1\n&nbsp;\n&nbsp;\nLine 2'}</code></pre>
-                  <Alert variant="default" className="bg-secondary mt-2">
+                  <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-2">
                     <AlertTitle>Preview:</AlertTitle>
                     <AlertDescription>
                       <p>Line 1</p>
@@ -297,10 +297,10 @@ export default function TutorialPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-md mb-1 mt-4">Using Backslashes (<code>\</code>) for Line Breaks</h4>
+                  <h4 className="font-semibold text-md mb-1 mt-4">Using Backslashes (<code>\\</code>) for Line Breaks</h4>
                   <p>A backslash at the end of a line tells the Markdown parser to insert a hard line break (like <code>&lt;br/&gt;</code>).</p>
-                  <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Line 1\\\nLine 2\\\n\\\nLine 3'}</code></pre>
-                  <Alert variant="default" className="bg-secondary mt-2">
+                  <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>{'Line 1\\\\\nLine 2\\\\\n\\\\\nLine 3'}</code></pre>
+                  <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-2">
                     <AlertTitle>Preview:</AlertTitle>
                     <AlertDescription>
                       <p>Line 1<br/>Line 2<br/><br/>Line 3</p>
@@ -313,7 +313,7 @@ export default function TutorialPage() {
                   <h4 className="font-semibold text-md mb-1 mt-4">Using Two Trailing Spaces for Line Breaks</h4>
                   <p>A common Markdown way to create a hard line break is to end a line with two or more spaces and then press Enter. Many editors will make these trailing spaces hard to see, so be careful.</p>
                   <pre className="bg-muted p-3 rounded-md text-sm mt-2 whitespace-pre-wrap"><code>{'Line one  \nLine two\n\n(Note: There are two spaces after "Line one")'}</code></pre>
-                  <Alert variant="default" className="bg-secondary mt-2">
+                  <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-2">
                     <AlertTitle>Preview:</AlertTitle>
                     <AlertDescription>
                       <p>Line one<br/>Line two</p>
@@ -342,7 +342,7 @@ export default function TutorialPage() {
                     {'This text will be visible.\n\n{::comment}\nThis is a comment block.\nIt can span multiple lines.\nNone of this will appear in the preview.\n{:/comment}\n\nThis text is also visible.\n\nAn inline comment: Visible text {::comment}hidden comment{:/comment} more visible text.'}
                   </code>
                 </pre>
-                <Alert variant="default" className="bg-secondary">
+                <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <p>This text will be visible.</p>
@@ -360,6 +360,162 @@ export default function TutorialPage() {
             </AccordionItem>
 
           </Accordion>
+        </TutorialSection>
+
+        <TutorialSection title="Markdown Tables (and a note on Slack)" icon={<Table2 className="h-6 w-6" />}>
+          <p>
+            Slack, a popular instant messaging application for team collaboration, has its own formatting conventions which are similar to Markdown but not identical. While full Markdown might not be supported everywhere in Slack, many basic constructs, including a way to represent tabular data, can be used in messages and posts.
+          </p>
+          <p className="mt-2">
+            Markdown tables allow you to organize data into rows and columns. Headers are created using a minimum of three hyphens (`---`) under each header name, and columns of data or headers are separated by the pipe symbol (`|`).
+          </p>
+
+          <h4 className="font-semibold text-lg mb-2 mt-6">Basic Table Syntax</h4>
+          <p>Here’s how you can create a simple table:</p>
+          <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>
+{`|Header1 |Header2  | Header3|
+|--- | --- | ---|
+|data1|data2|data3|
+|data11|data12|data13|`}
+          </code></pre>
+          
+          <h5 className="font-medium text-md mb-1 mt-4">Generated HTML:</h5>
+          <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>
+{`<table>
+  <thead>
+    <tr>
+      <th>Header1</th>
+      <th>Header2</th>
+      <th>Header3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>data1</td>
+      <td>data2</td>
+      <td>data3</td>
+    </tr>
+    <tr>
+      <td>data11</td>
+      <td>data12</td>
+      <td>data13</td>
+    </tr>
+  </tbody>
+</table>`}
+          </code></pre>
+
+          <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-4">
+            <AlertTitle>Preview:</AlertTitle>
+            <AlertDescription>
+              <table className="w-full my-2 border-collapse border border-border">
+                <thead>
+                  <tr>
+                    <th className="border border-border px-2 py-1 text-left bg-muted">Header1</th>
+                    <th className="border border-border px-2 py-1 text-left bg-muted">Header2</th>
+                    <th className="border border-border px-2 py-1 text-left bg-muted">Header3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-border px-2 py-1">data1</td>
+                    <td className="border border-border px-2 py-1">data2</td>
+                    <td className="border border-border px-2 py-1">data3</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-border px-2 py-1">data11</td>
+                    <td className="border border-border px-2 py-1">data12</td>
+                    <td className="border border-border px-2 py-1">data13</td>
+                  </tr>
+                </tbody>
+              </table>
+            </AlertDescription>
+          </Alert>
+
+          <h4 className="font-semibold text-lg mb-2 mt-6">Rules for Markdown Tables</h4>
+          <ul className="list-disc list-inside ml-4 space-y-1">
+            <li>Headers are separated by pipes (`|`).</li>
+            <li>Tables without headers are not supported in the core Markdown specification.</li>
+            <li>A minimum of 3 dashes (`---`) under each header name is required; you can declare more.</li>
+            <li>Using pipe symbols at the start and end of rows is optional but improves readability.</li>
+            <li>Use a pipe symbol to separate each column of row data.</li>
+            <li>Table cell data can include simple text or other inline Markdown content.</li>
+            <li>If cell content needs to include pipe (`|`) or backtick (`) symbols, these symbols must be escaped (e.g., `\\|`, `\\\``).</li>
+          </ul>
+
+          <h4 className="font-semibold text-lg mb-2 mt-6">Formatting Content Within Tables</h4>
+          <p>You can use inline Markdown styles within table cells:</p>
+          <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>
+{`|Header1 |Header2  | Header3|
+|--- | --- | ---|
+|**bold style**| \`code block\`|*italic*|
+|\\|escape pipe|\\\`backtick|data13|`}
+          </code></pre>
+          <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-4">
+            <AlertTitle>Preview:</AlertTitle>
+            <AlertDescription>
+              <table className="w-full my-2 border-collapse border border-border">
+                <thead>
+                  <tr>
+                    <th className="border border-border px-2 py-1 text-left bg-muted">Header1</th>
+                    <th className="border border-border px-2 py-1 text-left bg-muted">Header2</th>
+                    <th className="border border-border px-2 py-1 text-left bg-muted">Header3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-border px-2 py-1"><strong>bold style</strong></td>
+                    <td className="border border-border px-2 py-1"><code className="bg-muted-foreground/20 text-sm px-1 py-0.5 rounded-sm font-mono">code block</code></td>
+                    <td className="border border-border px-2 py-1"><em>italic</em></td>
+                  </tr>
+                  <tr>
+                    <td className="border border-border px-2 py-1">|escape pipe</td>
+                    <td className="border border-border px-2 py-1">\`backtick</td>
+                    <td className="border border-border px-2 py-1">data13</td>
+                  </tr>
+                </tbody>
+              </table>
+            </AlertDescription>
+          </Alert>
+
+          <h4 className="font-semibold text-lg mb-2 mt-6">Aligning Cell Data</h4>
+          <p>You can align content within columns to the left, right, or center using colons (`:`) in the header separator line:</p>
+          <ul className="list-disc list-inside ml-4 space-y-1">
+            <li>Align left: `:---` (this is the default if no colons are used)</li>
+            <li>Align right: `---:`</li>
+            <li>Align center: `:---:`</li>
+          </ul>
+          <pre className="bg-muted p-3 rounded-md text-sm mt-2"><code>
+{`|Header1 (Left) | Header2 (Right) | Header3 (Center)|
+|:--- | ---:| :---:|
+|Align left| Align right|center text|
+|cell data1|cell data2|cell data3|`}
+          </code></pre>
+           <Alert variant="default" className="bg-secondary border-border dark:bg-muted/50 dark:border-border mt-4">
+            <AlertTitle>Preview:</AlertTitle>
+            <AlertDescription>
+              <table className="w-full my-2 border-collapse border border-border">
+                <thead>
+                  <tr>
+                    <th className="border border-border px-2 py-1 text-left bg-muted">Header1 (Left)</th>
+                    <th className="border border-border px-2 py-1 text-right bg-muted">Header2 (Right)</th>
+                    <th className="border border-border px-2 py-1 text-center bg-muted">Header3 (Center)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-border px-2 py-1 text-left">Align left</td>
+                    <td className="border border-border px-2 py-1 text-right">Align right</td>
+                    <td className="border border-border px-2 py-1 text-center">center text</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-border px-2 py-1 text-left">cell data1</td>
+                    <td className="border border-border px-2 py-1 text-right">cell data2</td>
+                    <td className="border border-border px-2 py-1 text-center">cell data3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </AlertDescription>
+          </Alert>
         </TutorialSection>
 
         <TutorialSection title="Using the Editor" icon={<Wand2 className="h-6 w-6" />}>
@@ -427,3 +583,5 @@ export default function TutorialPage() {
   );
 }
 
+
+    
