@@ -129,13 +129,12 @@ export default function TutorialPage() {
                 <ImageIcon className="mr-2 h-5 w-5 text-primary/80" /> Images
               </AccordionTrigger>
               <AccordionContent className="space-y-2 pl-2">
-                <p>Embed images using `![Alt Text](Image URL)`. You can also suggest dimensions using `{ width="50%" height="100px" }` syntax.</p>
-                <pre className="bg-muted p-3 rounded-md text-sm"><code>{'![Placeholder Image](https://placehold.co/300x200.png)\n![Sized Image](https://placehold.co/300x200.png){ width="150px" }'}</code></pre>
+                <p>Embed images using `![Alt Text](Image URL)`.</p>
+                <pre className="bg-muted p-3 rounded-md text-sm"><code>{'![Placeholder Image](https://placehold.co/300x200.png)'}</code></pre>
                 <Alert variant="default" className="bg-secondary">
                   <AlertTitle>Preview:</AlertTitle>
                   <AlertDescription>
                     <Image src="https://placehold.co/300x200.png" alt="Placeholder Image" width={300} height={200} className="rounded-md shadow-sm my-2" data-ai-hint="abstract placeholder" />
-                    <img src="https://placehold.co/300x200.png" alt="Sized Image" style={{ width: "150px" }} className="rounded-md shadow-sm my-2" data-ai-hint="abstract photo" />
                   </AlertDescription>
                 </Alert>
               </AccordionContent>
