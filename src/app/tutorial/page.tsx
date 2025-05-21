@@ -4,7 +4,7 @@ import { AppHeader } from "@/components/AppHeader";
 import { TutorialSection } from "@/components/TutorialSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline } from "lucide-react";
+import { Code, Wand2, FileText, Sparkles, HelpCircle, List, Type, Link as LinkIcon, Image as ImageIcon, Terminal, MessageSquare, CheckSquare, MessageSquareOff, Baseline, Link2 } from "lucide-react";
 import Image from "next/image";
 
 export default function TutorialPage() {
@@ -141,6 +141,31 @@ export default function TutorialPage() {
               </AccordionContent>
             </AccordionItem>
 
+            <AccordionItem value="item-linked-images">
+              <AccordionTrigger className="text-lg font-medium hover:text-primary">
+                <Link2 className="mr-2 h-5 w-5 text-primary/80" /> Embedding Images with Links
+              </AccordionTrigger>
+              <AccordionContent className="space-y-2 pl-2">
+                <p>You can make images clickable by wrapping the Markdown for an image in the Markdown for a link:</p>
+                <pre className="bg-muted p-3 rounded-md text-sm"><code>{'[![Markdown Logo](https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg)](https://www.markdownguide.org)'}</code></pre>
+                <Alert variant="default" className="bg-secondary">
+                  <AlertTitle>Preview:</AlertTitle>
+                  <AlertDescription>
+                    <a href="https://www.markdownguide.org" target="_blank" rel="noopener noreferrer" className="inline-block my-2">
+                      <Image 
+                        src="https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg" 
+                        alt="Markdown Logo" 
+                        width={100} // Adjust width as needed
+                        height={62} // Adjust height as needed
+                        className="rounded-md shadow-sm"
+                        data-ai-hint="logo brand"
+                      />
+                    </a>
+                  </AlertDescription>
+                </Alert>
+              </AccordionContent>
+            </AccordionItem>
+
             <AccordionItem value="item-6">
               <AccordionTrigger className="text-lg font-medium hover:text-primary">
                 <Terminal className="mr-2 h-5 w-5 text-primary/80" /> Code Blocks & Inline Code
@@ -190,9 +215,9 @@ export default function TutorialPage() {
                     <p>First line of text.<br/>This text will appear on a new line after a single blank line.</p>
                   </AlertDescription>
                 </Alert>
-                <Alert variant="info" className="mt-3 bg-blue-50 border-blue-300">
-                  <AlertTitle className="text-blue-700">Note</AlertTitle>
-                  <AlertDescription className="text-blue-600">
+                <Alert variant="default" className="mt-3 bg-blue-50 border-blue-300 dark:bg-blue-900/30 dark:border-blue-700">
+                  <AlertTitle className="text-blue-700 dark:text-blue-300">Note</AlertTitle>
+                  <AlertDescription className="text-blue-600 dark:text-blue-400">
                     While Markdown supports HTML, using it too much can make your Markdown less readable. For simple paragraph breaks, just leave a blank line between paragraphs. Use <code>&lt;br/&gt;</code> when you specifically need a single line break within a block of text or want to control spacing more precisely.
                   </AlertDescription>
                 </Alert>
@@ -218,9 +243,9 @@ export default function TutorialPage() {
                     <p>An inline comment: Visible text  more visible text.</p>
                   </AlertDescription>
                 </Alert>
-                 <Alert variant="info" className="mt-3 bg-blue-50 border-blue-300">
-                  <AlertTitle className="text-blue-700">Note</AlertTitle>
-                  <AlertDescription className="text-blue-600">
+                 <Alert variant="default" className="mt-3 bg-blue-50 border-blue-300 dark:bg-blue-900/30 dark:border-blue-700">
+                  <AlertTitle className="text-blue-700 dark:text-blue-300">Note</AlertTitle>
+                  <AlertDescription className="text-blue-600 dark:text-blue-400">
                     Comments are useful for leaving notes to yourself or collaborators directly within the Markdown document without affecting the final output.
                   </AlertDescription>
                 </Alert>
@@ -275,15 +300,15 @@ export default function TutorialPage() {
             <li><strong>Add New Boilerplate:</strong> Click "Add New". A dialog will appear. Enter a title and the Markdown content for your boilerplate, then click "Save Boilerplate".</li>
             <li><strong>Insert Boilerplate:</strong> Find your desired boilerplate in the list and click "Insert into Editor". The boilerplate content will be appended to your current editor text.</li>
             <li><strong>Edit Boilerplate:</strong> Click the edit icon (pencil) next to a boilerplate. Modify its title or content in the dialog, then click "Save Boilerplate".</li>
-            <li><strong>Delete Boilerplate:</strong> Click the delete icon (trash can) next to a boilerplate. Confirm the deletion when prompted.</li>
+            <li><strong>Delete Boilerplate:</strong> Click the delete icon (trash can) next to a boilerplate. Confirm the deletion when prompted by typing "delete".</li>
           </ol>
           <p className="mt-2">
             Boilerplates are stored in your browser's local storage, so they'll be available next time you use Markdown Maverick on the same browser.
           </p>
         </TutorialSection>
-         <Alert variant="default" className="mt-10 bg-primary/10 border-primary/30">
+         <Alert variant="default" className="mt-10 bg-primary/10 border-primary/30 dark:bg-primary/20 dark:border-primary/40">
           <AlertTitle className="text-primary font-semibold flex items-center gap-2"><HelpCircle />Need More Help?</AlertTitle>
-          <AlertDescription className="text-primary/90">
+          <AlertDescription className="text-primary/90 dark:text-primary/80">
             If you have any questions or run into issues, feel free to explore or experiment. Happy writing!
           </AlertDescription>
         </Alert>
@@ -295,3 +320,5 @@ export default function TutorialPage() {
   );
 }
 
+
+    
