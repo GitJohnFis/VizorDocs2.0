@@ -7,11 +7,12 @@ import { MarkdownEditor } from "@/components/MarkdownEditor";
 import { MarkdownPreview } from "@/components/MarkdownPreview";
 import { AiGenerator } from "@/components/AiGenerator";
 import { AiFlavoring } from "@/components/AiFlavoring";
+import { ImageMarkdownInserter } from "@/components/ImageMarkdownInserter"; // Added import
 import { BoilerplateManager } from "@/components/BoilerplateManager";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Wand2, FileText, SparklesIcon, Edit, Eye } from "lucide-react";
+import { Wand2, FileText, SparklesIcon, Edit, Eye, ImageIcon } from "lucide-react"; // ImageIcon potentially used if we want a tab icon
 
 export default function MarkdownMaverickPage() {
   const [markdownInput, setMarkdownInput] = useState<string>("");
@@ -26,6 +27,10 @@ export default function MarkdownMaverickPage() {
 
   const handleInsertBoilerplate = useCallback((content: string) => {
     setMarkdownInput((prev) => prev + (prev ? "\n\n" : "") + content);
+  }, []);
+
+  const handleInsertImageMarkdown = useCallback((markdown: string) => { // New handler
+    setMarkdownInput((prev) => prev + (prev ? "\n\n" : "") + markdown);
   }, []);
 
   return (
@@ -50,6 +55,7 @@ export default function MarkdownMaverickPage() {
                       currentMarkdown={markdownInput}
                       onFlavoredContent={handleFlavoredContent}
                     />
+                    <ImageMarkdownInserter onInsertMarkdown={handleInsertImageMarkdown} /> {/* Added component */}
                   </TabsContent>
                   <TabsContent value="boilerplates">
                     <BoilerplateManager onInsertBoilerplate={handleInsertBoilerplate} />
