@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { ChangeEvent } from "react";
@@ -20,12 +21,12 @@ export function MarkdownEditor({
   };
 
   return (
-    <ScrollArea className="h-full w-full rounded-md border shadow-inner">
+    <ScrollArea className="h-full w-full rounded-md border shadow-inner bg-background">
       <Textarea
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
-        className="h-full min-h-[calc(100vh-200px)] w-full resize-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-4 text-base"
+        className="h-full w-full resize-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-4 text-base bg-transparent"
         aria-label="Markdown Editor"
       />
     </ScrollArea>

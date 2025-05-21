@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useCallback } from "react";
@@ -10,7 +11,7 @@ import { BoilerplateManager } from "@/components/BoilerplateManager";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Wand2, FileText, SparklesIcon } from "lucide-react";
+import { Wand2, FileText, SparklesIcon, Edit, Eye } from "lucide-react";
 
 export default function MarkdownMaverickPage() {
   const [markdownInput, setMarkdownInput] = useState<string>("");
@@ -59,21 +60,29 @@ export default function MarkdownMaverickPage() {
           </ResizablePanel>
           <ResizableHandle withHandle />
           <ResizablePanel defaultSize={65} minSize={30} className="p-1">
-            <div className="flex flex-col h-full space-y-2">
-                <h2 className="text-lg font-semibold px-4 pt-3 text-muted-foreground">Editor</h2>
-                <div className="flex-grow min-h-[200px]">
-                    <MarkdownEditor value={markdownInput} onChange={setMarkdownInput} />
-                </div>
-                <h2 className="text-lg font-semibold px-4 pt-3 text-muted-foreground">Preview</h2>
-                <div className="flex-grow min-h-[200px]">
-                     <MarkdownPreview markdownContent={markdownInput} />
-                </div>
-            </div>
+            <Tabs defaultValue="editor" className="flex flex-col h-full w-full">
+              <TabsList className="grid w-full grid-cols-2 shrink-0 mb-1 mx-auto max-w-md">
+                <TabsTrigger value="editor">
+                  <Edit className="mr-2 h-4 w-4" />
+                  Editor
+                </TabsTrigger>
+                <TabsTrigger value="preview">
+                  <Eye className="mr-2 h-4 w-4" />
+                  Preview
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="editor" className="flex-grow mt-1 p-0 overflow-hidden rounded-md">
+                <MarkdownEditor value={markdownInput} onChange={setMarkdownInput} />
+              </TabsContent>
+              <TabsContent value="preview" className="flex-grow mt-1 p-0 overflow-hidden rounded-md">
+                <MarkdownPreview markdownContent={markdownInput} />
+              </TabsContent>
+            </Tabs>
           </ResizablePanel>
         </ResizablePanelGroup>
       </main>
       <footer className="py-4 text-center text-sm text-muted-foreground border-t">
-        Markdown Maverick &copy; {new Date().getFullYear()}
+        Markdown Maverick © {new Date().getFullYear()}
       </footer>
     </div>
   );
